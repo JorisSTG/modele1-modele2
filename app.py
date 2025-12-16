@@ -17,7 +17,7 @@ plt.rcParams.update({
     "text.color": "#FFFFFF",
 })
 
-st.title("Comparaison multisource)
+st.title("Comparaison multisource")
 st.markdown(
     """
     L’objectif de cette application est d’évaluer la précision et la cohérence entre deux jeux de données météorologie (température uniquement) à des fins de simulations STD.
