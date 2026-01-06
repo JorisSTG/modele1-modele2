@@ -935,7 +935,7 @@ if uploaded_model1 and uploaded_model2:
     for p in st.session_state["resume_chaud_nuit"]:
         st.write("- " + p)
 
-        # --- Fonction nombre de jours de vague ---
+    # --- Fonction nombre de jours de vague ---
     def nombre_jours_vague(T):
         T = np.array(T)
         n = len(T)
@@ -965,6 +965,12 @@ if uploaded_model1 and uploaded_model2:
         return int(jours_vague.sum()), jours_vague
     
     # ---------------- Calcul Tm et nombre de jours de vague sur l'année complète ----------------
+    # --- Concaténation annuelle ---
+    Tn_obs_annual = np.concatenate(Tn_jour_all)
+    Tx_obs_annual = np.concatenate(Tx_jour_all)
+    
+    Tn_mod_annual = np.concatenate(Tn_jour_mod_all)
+    Tx_mod_annual = np.concatenate(Tx_jour_mod_all)
 
     # 1) Longueur de chaque mois
     jours_par_mois = [len(Tx_jour_all[m]) for m in range(12)]
