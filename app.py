@@ -1010,7 +1010,7 @@ if uploaded_model1 and uploaded_model2:
     # ---------------- Graphique bâtons ----------------
     fig, ax = plt.subplots(figsize=(12, 5))
     x = np.arange(1, 13)
-    ax.bar(x - 0.2, jours_vague_obs, width=0.4, label="Observations", color=couleur_Observations)
+    ax.bar(x - 0.2, jours_vague_obs, width=0.4, label="Observations", color=couleur_TRACC)
     ax.bar(x + 0.2, jours_vague_mod, width=0.4, label="Modèle", color=couleur_modele)
     ax.set_xlabel("Mois")
     ax.set_ylabel("Nombre de jours de vague de chaleur")
