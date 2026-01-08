@@ -129,8 +129,8 @@ if uploaded_model1 and uploaded_model2:
     st.dataframe(df_rmse_styled, hide_index=True)
 
     # -------- Précision globale annuelle --------
-    model_annee = model_values[:sum(heures_par_mois)]        # toutes les heures de l'année
-    obs_annee = np.concatenate(obs_mois_all)                # toutes les heures TRACC concaténées
+    model_annee = model_values[:sum(heures_par_mois)]
+    obs_annee = np.concatenate(obs_mois_all)
     
     precision_annuelle = precision_overlap(model_annee, obs_annee)
     st.subheader(f"Précision globale annuelle : {precision_annuelle} %")
@@ -138,10 +138,10 @@ if uploaded_model1 and uploaded_model2:
 
     # -------- Suite de votre code --------
     # (Coller ici la suite de votre code original)
-    t_sup_thresholds = st.text_input("Seuils Tmax supérieur (°C, séparés par des virgules)", "25,30,35")
-    t_inf_thresholds = st.text_input("Seuils Tmin inférieur (°C, séparés par des virgules)", "-5,0,5")
-    t_sup_thresholds_list = [int(float(x.strip())) for x in t_sup_thresholds.split(",")]
-    t_inf_thresholds_list = [int(float(x.strip())) for x in t_inf_thresholds.split(",")]
+    t_sup_thresholds = st.text_input("Seuils Tmax supérieur (°C, séparés par des / )", "25/30")
+    t_inf_thresholds = st.text_input("Seuils Tmin inférieur (°C, séparés par des / )", "0/5")
+    t_sup_thresholds_list = [int(float(x.strip())) for x in t_sup_thresholds.split("/")]
+    t_inf_thresholds_list = [int(float(x.strip())) for x in t_inf_thresholds.split("/")]
 
     stats_sup = []
     stats_inf = []
@@ -170,7 +170,7 @@ if uploaded_model1 and uploaded_model2:
         for seuil in t_inf_thresholds_list:
             heures_obs = np.sum(obs_mois < seuil)
             nb_heures_mod = np.sum(mod_mois < seuil)
-            ecart = nb_heures_mod - heures_obs  # source - source 2
+            ecart = nb_heures_mod - heures_obs  # source 1 - source 2
             stats_inf.append({
                 "Mois": mois,
                 "Seuil (°C)": f"{seuil}",
