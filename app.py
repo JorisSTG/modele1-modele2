@@ -247,7 +247,7 @@ if uploaded_model1 and uploaded_model2:
     st.subheader("Somme annuelle — Nombre d'heures supérieur au(x) seuil(s)")
     df_sup_year_styled = (
         df_sup_year.style
-        .background_gradient(subset=["Ecart (soure 1 - source 2))"], cmap="bwr", vmin=vminH*12, vmax=vmaxH*12, axis=None)
+        .background_gradient(subset=["Ecart (soure 1 - source 2)"], cmap="bwr", vmin=vminH*12, vmax=vmaxH*12, axis=None)
     )
     st.dataframe(df_sup_year_styled, hide_index=True)
     
