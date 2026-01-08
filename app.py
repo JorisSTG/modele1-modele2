@@ -725,9 +725,9 @@ if uploaded_model1 and uploaded_model2:
     # ---------------- FIGURE Tn ----------------
     fig, ax = plt.subplots(figsize=(15, 5))
     ax.bar(df_hist["Temp_Num"] - 0.25, df_hist["Obs_Tn"], width=0.4,
-           label="source 1 Tn", color=couleur_TRACC)
+           label="source 2 Tn", color=couleur_TRACC)
     ax.bar(df_hist["Temp_Num"] + 0.25, df_hist["Mod_Tn"], width=0.4,
-           label="source 2 Tn", color=couleur_modele)
+           label="source 1 Tn", color=couleur_modele)
     
     ax.set_title("Histogramme annuel – Nombre de jours par classe de Tn")
     ax.set_xlabel("Température (°C)")
@@ -742,9 +742,9 @@ if uploaded_model1 and uploaded_model2:
     # ---------------- FIGURE Tx ----------------
     fig, ax = plt.subplots(figsize=(15, 5))
     ax.bar(df_hist["Temp_Num"] - 0.25, df_hist["Obs_Tx"], width=0.4,
-           label="source 1 Tx", color=couleur_TRACC)
+           label="source 2 Tx", color=couleur_TRACC)
     ax.bar(df_hist["Temp_Num"] + 0.25, df_hist["Mod_Tx"], width=0.4,
-           label="source 2 Tx", color=couleur_modele)
+           label="source 1 Tx", color=couleur_modele)
     
     ax.set_title("Histogramme annuel – Nombre de jours par classe de Tx")
     ax.set_xlabel("Température (°C)")
