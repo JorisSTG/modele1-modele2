@@ -199,6 +199,65 @@ if uploaded_model1 and uploaded_model2:
     st.subheader("Nombre d'heures inférieur au(x) seuil(s)")
     st.dataframe(df_inf_styled, hide_index=True)
 
+    # =====================================
+    # ======= SOMMES ANNUELLES =============
+    # =====================================
+    
+    obs_all = np.concatenate(obs_mois_all)
+    mod_all = np.array(model_values)
+    
+    annual_sup = []
+    annual_inf = []
+    
+    # ----- Supérieurs -----
+    for seuil in t_sup_thresholds_list:
+        heures_obs = np.sum(obs_all > seuil)
+        heures_mod = np.sum(mod_all > seuil)
+        ecart = heures_mod - heures_obs
+    
+        annual_sup.append({
+            "Période": "Année",
+            "Seuil (°C)": f"{seuil}",
+            "Heures Modèle": int(heures_mod),
+            "Heures Observations": int(heures_obs),
+            "Ecart (Modèle - Observations)": int(ecart)
+        })
+    
+    # ----- Inférieurs -----
+    for seuil in t_inf_thresholds_list:
+        heures_obs = np.sum(obs_all < seuil)
+        heures_mod = np.sum(mod_all < seuil)
+        ecart = heures_mod - heures_obs
+    
+        annual_inf.append({
+            "Période": "Année",
+            "Seuil (°C)": f"{seuil}",
+            "Heures Modèle": int(heures_mod),
+            "Heures Observations": int(heures_obs),
+            "Ecart (Modèle - Observations)": int(ecart)
+        })
+    
+    df_sup_year = pd.DataFrame(annual_sup)
+    df_inf_year = pd.DataFrame(annual_inf)
+    
+    # =====================================
+    # ======= AFFICHAGE ANNUEL =============
+    # =====================================
+    
+    st.subheader("Somme annuelle — Nombre d'heures supérieur au(x) seuil(s)")
+    df_sup_year_styled = (
+        df_sup_year.style
+        .background_gradient(subset=["Ecart (Modèle - Observations)"], cmap="bwr", vmin=vminH*12, vmax=vmaxH*12, axis=None)
+    )
+    st.dataframe(df_sup_year_styled, hide_index=True)
+    
+    st.subheader("Somme annuelle — Nombre d'heures inférieur au(x) seuil(s)")
+    df_inf_year_styled = (
+        df_inf_year.style
+        .background_gradient(subset=["Ecart (Modèle - Observations)"], cmap="bwr_r", vmin=vminH*12, vmax=vmaxH*12, axis=None)
+    )
+    st.dataframe(df_inf_year_styled, hide_index=True)
+
     # -------- Histogrammes par plage de température --------
     st.subheader(f"Histogrammes horaire : source 1 et source 2")
     st.markdown(
