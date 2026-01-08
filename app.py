@@ -1156,7 +1156,7 @@ if uploaded_model1 and uploaded_model2:
         ax.set_xlabel("Mois")
         ax.legend()
     
-        # 🔥 enregistrer la figure dans le dictionnaire
+        # enregistrer la figure dans le dictionnaire
         figures[titre] = fig
     
         st.pyplot(fig)
@@ -1264,7 +1264,7 @@ if uploaded_model1 and uploaded_model2:
     st.pyplot(fig)
     plt.close(fig)
 
-        # -------- Calcul des percentiles P1 à P100 --------
+    # -------- Calcul des percentiles P1 à P100 --------
     percentiles = np.arange(1, 101)
     P_obs = np.percentile(obs_annee, percentiles)
     P_mod = np.percentile(model_annee, percentiles)
@@ -1291,6 +1291,7 @@ if uploaded_model1 and uploaded_model2:
     ax.set_title("Comparaison des percentiles annuels")
     ax.grid(True, linestyle=':', color='gray', alpha=0.5)
     ax.legend()
+    fig_quantilequantile = fig
     st.pyplot(fig)
 
 
@@ -1398,6 +1399,7 @@ if uploaded_model1 and uploaded_model2:
     )
     
     # ---- Stockage des figures dans session_state ----
+    st.session_state["fig_quantilequantile"] = fig_quantilequantile
     st.session_state["fig_hist_year"] = fig_hist_year
     st.session_state["fig_hist_diff"] = fig_hist_diff
     st.session_state["df_rmse"] = df_rmse
