@@ -825,8 +825,8 @@ if uploaded_model1 and uploaded_model2:
     # ---------------- Graphique bâtons ----------------
     fig, ax = plt.subplots(figsize=(12, 5))
     x = np.arange(1, 13)
-    ax.bar(x - 0.2, jours_vague_obs, width=0.4, label="source 1", color=couleur_TRACC)
-    ax.bar(x + 0.2, jours_vague_mod, width=0.4, label="source 2", color=couleur_modele)
+    ax.bar(x - 0.2, jours_vague_obs, width=0.4, label="source 2", color=couleur_TRACC)
+    ax.bar(x + 0.2, jours_vague_mod, width=0.4, label="source 1", color=couleur_modele)
     ax.set_xlabel("Mois")
     ax.set_ylabel("Nombre de jours de vague de chaleur")
     ax.set_title("Nombre de jours de vague de chaleur par mois : source 1 vs source 2")
@@ -897,7 +897,7 @@ if uploaded_model1 and uploaded_model2:
     # ---- Diagramme nuits tropicales ----
     fig, ax = plt.subplots(figsize=(14, 4))
     ax.bar(x - 0.25, nuits_tropicales_source_2, width=0.5, color=couleur_TRACC, label="source 2")
-    ax.bar(x + 0.25, nuits_tropicales_modele, width=0.5, color=couleur_modele, label="source")
+    ax.bar(x + 0.25, nuits_tropicales_modele, width=0.5, color=couleur_modele, label="source 1")
     ax.set_xticks(x)
     ax.set_xticklabels(mois_labels, rotation=45)
     ax.set_ylabel(f"Nombre de nuits Tn_jour > {tn_seuil}°C")
