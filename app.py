@@ -51,8 +51,8 @@ mois_noms = {
 # -------- Choix scénario et ville --------
 
 # -------- Upload des fichiers CSV --------
-uploaded_model1 = st.file_uploader("Déposer le fichier CSV de la source 1 (colonne unique T°C) :", type=["csv"])
-uploaded_model2 = st.file_uploader("Déposer le fichier CSV de la source 2 (colonne unique T°C) :", type=["csv"])
+uploaded_model1 = st.file_uploader("Déposer le fichier CSV de la **SOURCE 1** (colonne unique T°C) :", type=["csv"])
+uploaded_model2 = st.file_uploader("Déposer le fichier CSV de la **SOURCE 2** (colonne unique T°C) :", type=["csv"])
 
 if uploaded_model1 and uploaded_model2:
     st.markdown("")
@@ -712,13 +712,13 @@ if uploaded_model1 and uploaded_model2:
     
     # Modèle
     ax.plot(pct_for_cdf, mod_tx_cdf_year, "-",  lw=2, label="source 1 Tx",   color=colors["Tx"])
-    ax.plot(pct_for_cdf, mod_tm_cdf_year, "-",  lw=2, label="Modèle Tmoy", color=colors["Tm"])
-    ax.plot(pct_for_cdf, mod_tn_cdf_year, "-",  lw=2, label="Modèle Tn",   color=colors["Tn"])
+    ax.plot(pct_for_cdf, mod_tm_cdf_year, "-",  lw=2, label="source 1 Tmoy", color=colors["Tm"])
+    ax.plot(pct_for_cdf, mod_tn_cdf_year, "-",  lw=2, label="source 1 Tn",   color=colors["Tn"])
     
     # Observations
     ax.plot(pct_for_cdf, obs_tx_cdf_year, "--", lw=1.7, label="source 2 Tx",   color=colors["Tx"])
-    ax.plot(pct_for_cdf, obs_tm_cdf_year, "--", lw=1.7, label="Observations Tmoy", color=colors["Tm"])
-    ax.plot(pct_for_cdf, obs_tn_cdf_year, "--", lw=1.7, label="Observations Tn",   color=colors["Tn"])
+    ax.plot(pct_for_cdf, obs_tm_cdf_year, "--", lw=1.7, label="source 2 Tmoy", color=colors["Tm"])
+    ax.plot(pct_for_cdf, obs_tn_cdf_year, "--", lw=1.7, label="source 2 Tn",   color=colors["Tn"])
     
     ax.set_title(f"Année complète — CDF Tn_jour / Tmoy_jour / Tx_jour", color="white")
     ax.set_xlabel("Percentile", color="white")
