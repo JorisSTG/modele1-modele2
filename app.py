@@ -681,7 +681,7 @@ if uploaded_model1 and uploaded_model2:
     # =========================
     # ===== CDF ANNUELLE ======
     # =========================
-    st.subheader(f"CDF annuel Tn / Tx : Modèle et Observations {file_sel}")
+    st.subheader(f"CDF annuel Tn / Tx : source 1 vs source 2")
     # Concaténation annuelle
     obs_tn_year = np.concatenate(Tn_jour_all)
     obs_tm_year = np.concatenate(Tm_jour_all)
@@ -711,12 +711,12 @@ if uploaded_model1 and uploaded_model2:
     }
     
     # Modèle
-    ax.plot(pct_for_cdf, mod_tx_cdf_year, "-",  lw=2, label="Modèle Tx",   color=colors["Tx"])
+    ax.plot(pct_for_cdf, mod_tx_cdf_year, "-",  lw=2, label="source 1 Tx",   color=colors["Tx"])
     ax.plot(pct_for_cdf, mod_tm_cdf_year, "-",  lw=2, label="Modèle Tmoy", color=colors["Tm"])
     ax.plot(pct_for_cdf, mod_tn_cdf_year, "-",  lw=2, label="Modèle Tn",   color=colors["Tn"])
     
     # Observations
-    ax.plot(pct_for_cdf, obs_tx_cdf_year, "--", lw=1.7, label="Observations Tx",   color=colors["Tx"])
+    ax.plot(pct_for_cdf, obs_tx_cdf_year, "--", lw=1.7, label="source 2 Tx",   color=colors["Tx"])
     ax.plot(pct_for_cdf, obs_tm_cdf_year, "--", lw=1.7, label="Observations Tmoy", color=colors["Tm"])
     ax.plot(pct_for_cdf, obs_tn_cdf_year, "--", lw=1.7, label="Observations Tn",   color=colors["Tn"])
     
