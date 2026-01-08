@@ -720,7 +720,7 @@ if uploaded_model1 and uploaded_model2:
     ax.plot(pct_for_cdf, obs_tm_cdf_year, "--", lw=1.7, label="Observations Tmoy", color=colors["Tm"])
     ax.plot(pct_for_cdf, obs_tn_cdf_year, "--", lw=1.7, label="Observations Tn",   color=colors["Tn"])
     
-    ax.set_title(f"Année complète — CDF Tn_jour / Tmoy_jour / Tx_jour (Modèle vs Observations {file_sel})", color="white")
+    ax.set_title(f"Année complète — CDF Tn_jour / Tmoy_jour / Tx_jour", color="white")
     ax.set_xlabel("Percentile", color="white")
     ax.set_ylabel("Température (°C)", color="white")
     ax.tick_params(colors="white")
