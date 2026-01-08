@@ -218,9 +218,9 @@ if uploaded_model1 and uploaded_model2:
         annual_sup.append({
             "Période": "Année",
             "Seuil (°C)": f"{seuil}",
-            "Heures Modèle": int(heures_mod),
-            "Heures Observations": int(heures_obs),
-            "Ecart (Modèle - Observations)": int(ecart)
+            "Heures source 1": int(heures_mod),
+            "Heures source 2": int(heures_obs),
+            "Ecart (soure 1 - source 2)": int(ecart)
         })
     
     # ----- Inférieurs -----
@@ -232,9 +232,9 @@ if uploaded_model1 and uploaded_model2:
         annual_inf.append({
             "Période": "Année",
             "Seuil (°C)": f"{seuil}",
-            "Heures Modèle": int(heures_mod),
-            "Heures Observations": int(heures_obs),
-            "Ecart (Modèle - Observations)": int(ecart)
+            "Heures source 1": int(heures_mod),
+            "Heures source 2": int(heures_obs),
+            "Ecart (soure 1 - source 2)": int(ecart)
         })
     
     df_sup_year = pd.DataFrame(annual_sup)
@@ -247,14 +247,14 @@ if uploaded_model1 and uploaded_model2:
     st.subheader("Somme annuelle — Nombre d'heures supérieur au(x) seuil(s)")
     df_sup_year_styled = (
         df_sup_year.style
-        .background_gradient(subset=["Ecart (Modèle - Observations)"], cmap="bwr", vmin=vminH*12, vmax=vmaxH*12, axis=None)
+        .background_gradient(subset=["Ecart (soure 1 - source 2))"], cmap="bwr", vmin=vminH*12, vmax=vmaxH*12, axis=None)
     )
     st.dataframe(df_sup_year_styled, hide_index=True)
     
     st.subheader("Somme annuelle — Nombre d'heures inférieur au(x) seuil(s)")
     df_inf_year_styled = (
         df_inf_year.style
-        .background_gradient(subset=["Ecart (Modèle - Observations)"], cmap="bwr_r", vmin=vminH*12, vmax=vmaxH*12, axis=None)
+        .background_gradient(subset=["Ecart (soure 1 - source 2)"], cmap="bwr_r", vmin=vminH*12, vmax=vmaxH*12, axis=None)
     )
     st.dataframe(df_inf_year_styled, hide_index=True)
 
