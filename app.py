@@ -134,7 +134,6 @@ if uploaded_model1 and uploaded_model2:
     
     precision_annuelle = precision_overlap(model_annee, obs_annee)
     st.subheader(f"Précision globale annuelle : {precision_annuelle} %")
-    st.subheader("")
 
     # -------- Suite de votre code --------
     # (Coller ici la suite de votre code original)
