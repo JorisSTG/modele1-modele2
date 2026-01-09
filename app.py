@@ -343,9 +343,9 @@ if uploaded_model1 and uploaded_model2:
 
     # Plot
     fig, ax = plt.subplots(figsize=(16, 5))
-    ax.bar(df_plot_year["Temp_Num"] - 0.25, df_plot_year["source 2"], width=0.5,
+    ax.bar(df_plot_year["Temp_Num"] - 0.2, df_plot_year["source 2"], width=0.45,
            label="source 2", color=couleur_TRACC)
-    ax.bar(df_plot_year["Temp_Num"] + 0.25, df_plot_year["source"], width=0.5,
+    ax.bar(df_plot_year["Temp_Num"] + 0.2, df_plot_year["source"], width=0.45,
            label="source 1", color=couleur_modele)
     fig_hist_year = fig
     ax.set_title("Année entière - Durée en heures par seuil de température")
