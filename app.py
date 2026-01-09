@@ -297,8 +297,8 @@ if uploaded_model1 and uploaded_model2:
 
         # Création du plot
         fig, ax = plt.subplots(figsize=(14, 4))
-        ax.bar(df_plot["Temp_Num"] - 0.25, df_plot["source 2"], width=0.5, label="source 2", color=couleur_TRACC)
-        ax.bar(df_plot["Temp_Num"] + 0.25, df_plot["source 1"], width=0.5, label="source 1", color=couleur_modele)
+        ax.bar(df_plot["Temp_Num"] - 0.25, df_plot["source 2"], width=0.45, label="source 2", color=couleur_TRACC)
+        ax.bar(df_plot["Temp_Num"] + 0.25, df_plot["source 1"], width=0.45, label="source 1", color=couleur_modele)
         ax.set_title(f"{mois} - Durée en heure par seuil de température")
         ax.set_xlabel("Température (°C)")
         ax.set_ylabel("Durée en heure")
