@@ -383,12 +383,12 @@ if uploaded_model1 and uploaded_model2:
         """
         La couleur de la différence est définie ainsi :
 
-        Barres jaunes : le source compte davantage d’heures que la source 2 dans cette plage de température.
+        Barres jaunes : le source 1 compte davantage d’heures que la source 2 dans cette plage de température.
 
-        Barres blanches : la source 2 compte davantage d’heures que le source dans cette plage de température.
+        Barres blanches : la source 2 compte davantage d’heures que le source 1 dans cette plage de température.
 
-        La conclusion dépend donc de l’endroit où se situe cette différence. Une analyse doit être réalisée manuellement : par exemple, si la source 2 présente plus d’heures dans les plages « froides », cela signifie qu’elle est globalement plus froide que le source.
-        Comme les deux séries possèdent le même nombre total d’heures, un excès d’heures froides dans la source 2 implique mécaniquement un excès d’heures chaudes dans le source (et inversement).
+        La conclusion dépend donc de l’endroit où se situe cette différence. Une analyse doit être réalisée manuellement : par exemple, si la source 2 présente plus d’heures dans les plages « froides », cela signifie qu’elle est globalement plus froide que le source 1.
+        Comme les deux séries possèdent le même nombre total d’heures, un excès d’heures froides dans la source 2 implique mécaniquement un excès d’heures chaudes dans le source 1 (et inversement).
         """,
         unsafe_allow_html=True
     )
