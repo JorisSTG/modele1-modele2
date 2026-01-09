@@ -1019,8 +1019,8 @@ if uploaded_model1 and uploaded_model2:
     plt.close(fig)
     
     # ---- Affichage des totaux ----
-    st.markdown(f"**Total jours chauds source 1 :** {jours_chauds_total_modele}, **source 2 :** {jours_chauds_total_source_2}")
-    st.markdown(f"**Total nuits tropicales source 1 :** {nuits_tropicales_total_modele}, **source 2 :** {nuits_tropicales_total_source_2}")
+    st.markdown(f"**Total jours chauds source 1 :** {jours_chauds_total_modele} / **source 2 :** {jours_chauds_total_source_2}")
+    st.markdown(f"**Total nuits tropicales source 1 :** {nuits_tropicales_total_modele} / **source 2 :** {nuits_tropicales_total_source_2}")
 
     # =============================
     # Comparaison annuelle jours chauds / nuits tropicales
