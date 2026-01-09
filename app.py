@@ -29,7 +29,7 @@ st.markdown(
 
 heures_par_mois = [744, 672, 744, 720, 744, 720, 744, 744, 720, 744, 720, 744]
 percentiles_list = [10, 25, 50, 75, 90]
-couleur_modele = "goldenrod"
+couleur_modele = "turquoise"
 couleur_TRACC = "lightgray"
 vmaxT = 5
 vminT = -5
