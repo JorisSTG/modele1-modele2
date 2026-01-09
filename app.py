@@ -461,8 +461,8 @@ if uploaded_model1 and uploaded_model2:
     st.subheader(f"Précision des sources sur la répartition des durées des plages de température")
     st.markdown(
         """
-        Le RMSE correspond à la moyenne de l’écart absolu entre les valeurs des sources pour chaque intervalle de température.
-        La précision est calculée à partir de la différence totale d’heures dans chaque intervalle 
+        Le RMSE correspond à l’écart absolu moyen d'heure pour chaque intervalle de température.
+        La précision est calculée à partir de la différence totale d’heures de chaque intervalle 
         """,
         unsafe_allow_html=True
     )
