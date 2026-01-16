@@ -56,8 +56,8 @@ if uploaded_model1 and uploaded_model2:
     st.markdown("")
 
     # Use uploaded filenames as labels in plots and tables
-    label_mod = uploaded_model1.name
-    label_obs = uploaded_model2.name
+    label_mod = uploaded_model1.name.replace(".csv", "")
+    label_obs = uploaded_model2.name.replace(".csv", "")
 
     # -------- Lecture des fichiers CSV --------
     model_values = pd.read_csv(uploaded_model1, header=0).iloc[:, 0].values
