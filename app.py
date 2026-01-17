@@ -646,10 +646,10 @@ if uploaded_model1 and uploaded_model2:
     bin_labels = bin_edges[:-1].astype(int)
 
     Tn_obs_annual = np.concatenate(Tn_jour_all) if len(Tn_jour_all) > 0 else np.array([])
-    Tx_obs_annual = np.concatenate(Tx_jour_all) if len(Tx_jour_all) > 0 else np.array[]
+    Tx_obs_annual = np.concatenate(Tx_jour_all) if len(Tx_jour_all) > 0 else np.array([])
 
-    Tn_mod_annual = np.concatenate(Tn_jour_mod_all) if len(Tn_jour_mod_all) > 0 else np.array[]
-    Tx_mod_annual = np.concatenate(Tx_jour_mod_all) if len(Tx_jour_mod_all) > 0 else np.array[]
+    Tn_mod_annual = np.concatenate(Tn_jour_mod_all) if len(Tn_jour_mod_all) > 0 else np.array([])
+    Tx_mod_annual = np.concatenate(Tx_jour_mod_all) if len(Tx_jour_mod_all) > 0 else np.array([])
 
     def count_days_in_bins(daily_values, bin_edges):
         return np.histogram(daily_values, bins=bin_edges)[0] if daily_values.size else np.zeros(len(bin_edges)-1, dtype=int)
@@ -728,14 +728,14 @@ if uploaded_model1 and uploaded_model2:
 
     Tm_obs_all = np.concatenate([
         (np.array(Tx_jour_all[m]) + np.array(Tn_jour_all[m])) / 2 for m in range(12)
-    ]) if all(len(Tx_jour_all[m])>0 for m in range(12)) else np.array[]
+    ]) if all(len(Tx_jour_all[m])>0 for m in range(12)) else np.array([])
 
     Tm_mod_all = np.concatenate([
         (np.array(Tx_jour_mod_all[m]) + np.array(Tn_jour_mod_all[m])) / 2 for m in range(12)
-    ]) if all(len(Tx_jour_mod_all[m])>0 for m in range(12)) else np.array[]
+    ]) if all(len(Tx_jour_mod_all[m])>0 for m in range(12)) else np.array([])
 
-    _, jours_vague_obs_all = nombre_jours_vague(Tm_obs_all) if Tm_obs_all.size else (0, np.array[])
-    _, jours_vague_mod_all = nombre_jours_vague(Tm_mod_all) if Tm_mod_all.size else (0, np.array[])
+    _, jours_vague_obs_all = nombre_jours_vague(Tm_obs_all) if Tm_obs_all.size else (0, np.array([]))
+    _, jours_vague_mod_all = nombre_jours_vague(Tm_mod_all) if Tm_mod_all.size else (0, np.array([]))
 
     jours_vague_obs = []
     jours_vague_mod = []
@@ -1041,7 +1041,7 @@ if uploaded_model1 and uploaded_model2:
         obs_mois = obs_mois_all[mois_num-1]
         mod_mois = model_mois_all[mois_num-1]
         obs_percentiles_100 = np.percentile(obs_mois, np.linspace(0, 100, 100)) if obs_mois.size else np.array([])
-        mod_percentiles_100 = np.percentile(mod_mois, np.linspace(0, 100, 100)) if mod_mois.size else np.array[]
+        mod_percentiles_100 = np.percentile(mod_mois, np.linspace(0, 100, 100)) if mod_mois.size else np.array([])
 
         fig, ax = plt.subplots(figsize=(12, 4))
         if mod_percentiles_100.size:
