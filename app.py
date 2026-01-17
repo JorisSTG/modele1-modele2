@@ -308,6 +308,7 @@ if uploaded_model1 and uploaded_model2:
     ax.set_xlabel("Température (°C)")
     ax.set_ylabel("Durée en heure")
     ax.legend()
+    fig = fig_hist_year
     st.pyplot(fig)
     plt.close(fig)
 
@@ -820,6 +821,7 @@ if uploaded_model1 and uploaded_model2:
     ax.set_ylabel(f"Nombre de jours Tx_jour > {tx_seuil}°C")
     ax.set_title("Jours chauds par mois")
     ax.legend()
+    fig = fig_jourchaud
     st.pyplot(fig)
     plt.close(fig)
 
@@ -831,6 +833,7 @@ if uploaded_model1 and uploaded_model2:
     ax.set_ylabel(f"Nombre de nuits Tn_jour > {tn_seuil}°C")
     ax.set_title("Nuits tropicales par mois")
     ax.legend()
+    fig = fig_nuittrop
     st.pyplot(fig)
     plt.close(fig)
 
@@ -1030,6 +1033,7 @@ if uploaded_model1 and uploaded_model2:
     ax.set_title("Comparaison des percentiles annuels")
     ax.grid(True, linestyle=':', color='gray', alpha=0.5)
     ax.legend()
+    fig = fig_quantilequantile
     st.pyplot(fig)
     plt.close(fig)
 
@@ -1118,12 +1122,9 @@ if uploaded_model1 and uploaded_model2:
     # ---- Stockage des figures et DataFrames dans session_state (facultatif) ----
     st.session_state["fig_quantilequantile"] = fig_quantilequantile
     st.session_state["fig_hist_year"] = fig_hist_year
-    st.session_state["fig_hist_diff"] = fig_hist_diff
     st.session_state["df_rmse"] = df_rmse
     st.session_state["df_rmse_styled"] = df_rmse_styled
-    st.session_state["fig_tn_tx_mois"] = fig_tn_tx_mois
-    st.session_state["fig_jourschaud"] = fig_jourschaud
+    st.session_state["fig_jourschaud"] = fig_jourchaud
     st.session_state["fig_nuittrop"] = fig_nuittrop
-    st.session_state["fig_cdf"] = fig_cdf
     st.session_state["fig_DJC"] = figures.get("DJC")
     st.session_state["fig_DJF"] = figures.get("DJF")
