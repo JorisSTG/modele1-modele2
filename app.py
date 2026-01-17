@@ -1096,17 +1096,35 @@ if uploaded_model1 and uploaded_model2:
     st.write("Année entière - Percentiles")
     st.dataframe(df_p_annual, hide_index=True)
 
-    st.subheader(f"Bilan de {label_mod} vs {label_obs}  ({label_mod} - {label_obs})")
+    # Création du DataFrame bilan à partir des percentiles mensuels collectés
     df_bilan = pd.DataFrame(df_percentiles_all).round(2)
-    df_bilan["Ecart"] = df_bilan["Mod"] - df_bilan["Obs"]
+    
+    # Vérifiez les colonnes disponibles
+    st.write("Colonnes de df_bilan :", df_bilan.columns)
+    
+    # Utilisez les noms de colonnes dynamiques
+    df_bilan["Ecart"] = df_bilan[label_mod] - df_bilan[label_obs]
+    
+    # Extraire le numéro du percentile pour imposer l'ordre
     df_bilan["Percentile_num"] = df_bilan["Percentile"].str.extract("(\d+)").astype(int)
-    df_bilan["Percentile"] = pd.Categorical(df_bilan["Percentile"], categories=[f"P{p}" for p in percentiles_list], ordered=True)
+    
+    # Imposer l'ordre des percentiles
+    df_bilan["Percentile"] = pd.Categorical(
+        df_bilan["Percentile"],
+        categories=[f"P{p}" for p in percentiles_list],
+        ordered=True
+    )
+    
+    # Pivot pour affichage
     df_bilan_pivot = df_bilan.pivot(index="Percentile", columns="Mois", values="Ecart").round(2)
+    
+    # Affichage stylé avec couleurs selon l'écart
     st.dataframe(
         df_bilan_pivot.style
         .background_gradient(cmap="bwr", vmin=vminT, vmax=vmaxT)
         .format("{:.2f}")
     )
+
 
     # ---- Stockage des figures et DataFrames dans session_state (facultatif) ----
     st.session_state["fig_quantilequantile"] = fig_quantilequantile
