@@ -1140,7 +1140,7 @@ if uploaded_model1 and uploaded_model2:
     df_bilan_pivot = df_bilan.pivot(index="Percentile", columns="Mois", values="Ecart").round(2)
     
     # Affichage du tableau avec les 5 percentiles
-    st.write("Tableau comparatif des écarts de percentiles par mois (5 percentiles) :")
+    st.write("Tableau comparatif des écarts de percentiles par mois :")
     st.dataframe(
         df_bilan_pivot.style
         .background_gradient(cmap="bwr", vmin=vminT, vmax=vmaxT)
