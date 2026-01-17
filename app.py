@@ -1096,16 +1096,18 @@ if uploaded_model1 and uploaded_model2:
     st.write("Année entière - Percentiles")
     st.dataframe(df_p_annual, hide_index=True)
 
-    # Création du DataFrame bilan à partir des percentiles mensuels collectés
+    st.subheader(f"Bilan de {label_mod} vs {label_obs}  ({label_mod} - {label_obs})")
+
+    # Création du DataFrame à partir des données collectées
     df_bilan = pd.DataFrame(df_percentiles_all).round(2)
     
-    # Vérifiez les colonnes disponibles
+    # Vérification des colonnes disponibles (optionnel, pour le débogage)
     st.write("Colonnes de df_bilan :", df_bilan.columns)
     
-    # Utilisez les noms de colonnes dynamiques
+    # Calcul de l'écart en utilisant les noms de colonnes dynamiques
     df_bilan["Ecart"] = df_bilan[label_mod] - df_bilan[label_obs]
     
-    # Extraire le numéro du percentile pour imposer l'ordre
+    # Extraction du numéro du percentile pour imposer l'ordre
     df_bilan["Percentile_num"] = df_bilan["Percentile"].str.extract("(\d+)").astype(int)
     
     # Imposer l'ordre des percentiles
