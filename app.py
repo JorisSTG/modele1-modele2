@@ -606,11 +606,11 @@ if uploaded_model1 and uploaded_model2:
 
     pct_for_cdf = np.linspace(0, 100, 100)
     obs_tn_cdf_year = np.percentile(obs_tn_year, pct_for_cdf) if obs_tn_year.size else np.array([])
-    mod_tn_cdf_year = np.percentile(mod_tn_year, pct_for_cdf) if mod_tn_year.size else np.array[]
-    obs_tm_cdf_year = np.percentile(obs_tm_year, pct_for_cdf) if obs_tm_year.size else np.array[]
-    mod_tm_cdf_year = np.percentile(mod_tm_year, pct_for_cdf) if mod_tm_year.size else np.array[]
-    obs_tx_cdf_year = np.percentile(obs_tx_year, pct_for_cdf) if obs_tx_year.size else np.array[]
-    mod_tx_cdf_year = np.percentile(mod_tx_year, pct_for_cdf) if mod_tx_year.size else np.array[]
+    mod_tn_cdf_year = np.percentile(mod_tn_year, pct_for_cdf) if mod_tn_year.size else np.array([])
+    obs_tm_cdf_year = np.percentile(obs_tm_year, pct_for_cdf) if obs_tm_year.size else np.array([])
+    mod_tm_cdf_year = np.percentile(mod_tm_year, pct_for_cdf) if mod_tm_year.size else np.array([])
+    obs_tx_cdf_year = np.percentile(obs_tx_year, pct_for_cdf) if obs_tx_year.size else np.array([])
+    mod_tx_cdf_year = np.percentile(mod_tx_year, pct_for_cdf) if mod_tx_year.size else np.array([])
 
     fig, ax = plt.subplots(figsize=(12, 5))
     colors = {"Tn": "cyan", "Tm": "white", "Tx": "red"}
