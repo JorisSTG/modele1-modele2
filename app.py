@@ -1097,17 +1097,8 @@ if uploaded_model1 and uploaded_model2:
     st.dataframe(df_p_annual, hide_index=True)
 
     st.subheader(f"Bilan de {label_mod} vs {label_obs}  ({label_mod} - {label_obs})")
-
-    # Création du DataFrame à partir des données collectées
     df_bilan = pd.DataFrame(df_percentiles_all).round(2)
-    
-    # Vérification des colonnes disponibles (optionnel, pour le débogage)
-    st.write("Colonnes de df_bilan :", df_bilan.columns)
-    
-    # Calcul de l'écart en utilisant les noms de colonnes dynamiques
     df_bilan["Ecart"] = df_bilan[label_mod] - df_bilan[label_obs]
-    
-    # Extraction du numéro du percentile pour imposer l'ordre
     df_bilan["Percentile_num"] = df_bilan["Percentile"].str.extract("(\d+)").astype(int)
     
     # Imposer l'ordre des percentiles
@@ -1117,16 +1108,12 @@ if uploaded_model1 and uploaded_model2:
         ordered=True
     )
     
-    # Pivot pour affichage
     df_bilan_pivot = df_bilan.pivot(index="Percentile", columns="Mois", values="Ecart").round(2)
-    
-    # Affichage stylé avec couleurs selon l'écart
     st.dataframe(
         df_bilan_pivot.style
         .background_gradient(cmap="bwr", vmin=vminT, vmax=vmaxT)
         .format("{:.2f}")
     )
-
 
     # ---- Stockage des figures et DataFrames dans session_state (facultatif) ----
     st.session_state["fig_quantilequantile"] = fig_quantilequantile
