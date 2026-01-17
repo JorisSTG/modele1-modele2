@@ -1105,6 +1105,7 @@ if uploaded_model1 and uploaded_model2:
     # Création du DataFrame à partir des données collectées
     # On recalcule df_percentiles_all avec les 5 percentiles
     df_percentiles_all = []
+    percentiles_list = [5, 10, 25, 50, 75, 90, 95]
     for mois_num in range(1, 13):
         mois = mois_noms[mois_num]
         obs_mois = obs_mois_all[mois_num-1]
