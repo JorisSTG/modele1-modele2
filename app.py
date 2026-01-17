@@ -1033,7 +1033,7 @@ if uploaded_model1 and uploaded_model2:
     ax.set_title("Comparaison des percentiles annuels")
     ax.grid(True, linestyle=':', color='gray', alpha=0.5)
     ax.legend()
-    fig = fig_quantilequantile
+    fig_quantilequantile = fig
     st.pyplot(fig)
     plt.close(fig)
 
