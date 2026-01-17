@@ -308,7 +308,7 @@ if uploaded_model1 and uploaded_model2:
     ax.set_xlabel("Température (°C)")
     ax.set_ylabel("Durée en heure")
     ax.legend()
-    fig = fig_hist_year
+    fig_hist_year = fig
     st.pyplot(fig)
     plt.close(fig)
 
@@ -821,7 +821,7 @@ if uploaded_model1 and uploaded_model2:
     ax.set_ylabel(f"Nombre de jours Tx_jour > {tx_seuil}°C")
     ax.set_title("Jours chauds par mois")
     ax.legend()
-    fig = fig_jourchaud
+    fig_jourchaud = fig
     st.pyplot(fig)
     plt.close(fig)
 
@@ -833,7 +833,7 @@ if uploaded_model1 and uploaded_model2:
     ax.set_ylabel(f"Nombre de nuits Tn_jour > {tn_seuil}°C")
     ax.set_title("Nuits tropicales par mois")
     ax.legend()
-    fig = fig_nuittrop
+    fig_nuittrop = fig
     st.pyplot(fig)
     plt.close(fig)
 
