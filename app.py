@@ -1101,8 +1101,31 @@ if uploaded_model1 and uploaded_model2:
     st.dataframe(df_p_annual, hide_index=True)
 
     st.subheader(f"Bilan de {label_mod} vs {label_obs}  ({label_mod} - {label_obs})")
+
+    # Création du DataFrame à partir des données collectées
+    # On recalcule df_percentiles_all avec les 5 percentiles
+    df_percentiles_all = []
+    for mois_num in range(1, 13):
+        mois = mois_noms[mois_num]
+        obs_mois = obs_mois_all[mois_num-1]
+        mod_mois = model_mois_all[mois_num-1]
+    
+        # Ajout des 5 percentiles
+        for p in percentiles_list:  # Utilisation de percentiles_list (5 valeurs)
+            df_percentiles_all.append({
+                "Mois": mois,
+                "Percentile": f"P{p}",
+                label_obs: np.percentile(obs_mois, p),
+                label_mod: np.percentile(mod_mois, p)
+            })
+    
+    # Création du DataFrame avec les 5 percentiles
     df_bilan = pd.DataFrame(df_percentiles_all).round(2)
+    
+    # Calcul de l'écart
     df_bilan["Ecart"] = df_bilan[label_mod] - df_bilan[label_obs]
+    
+    # Extraction du numéro du percentile pour imposer l'ordre
     df_bilan["Percentile_num"] = df_bilan["Percentile"].str.extract("(\d+)").astype(int)
     
     # Imposer l'ordre des percentiles
@@ -1112,12 +1135,17 @@ if uploaded_model1 and uploaded_model2:
         ordered=True
     )
     
+    # Pivot pour affichage
     df_bilan_pivot = df_bilan.pivot(index="Percentile", columns="Mois", values="Ecart").round(2)
+    
+    # Affichage du tableau avec les 5 percentiles
+    st.write("Tableau comparatif des écarts de percentiles par mois (5 percentiles) :")
     st.dataframe(
         df_bilan_pivot.style
         .background_gradient(cmap="bwr", vmin=vminT, vmax=vmaxT)
         .format("{:.2f}")
     )
+
 
     # ---- Stockage des figures et DataFrames dans session_state (facultatif) ----
     st.session_state["fig_quantilequantile"] = fig_quantilequantile
