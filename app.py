@@ -354,36 +354,6 @@ if uploaded_model1 and uploaded_model2:
     for p in st.session_state["resume_hist"]:
         st.write("- " + p)
 
-    # -------- Précision par créneau horaire --------
-    results_temp = []
-
-    def rmse_hours(obs_counts, mod_counts):
-        min_len = min(len(obs_counts), len(mod_counts))
-        return np.sqrt(np.nanmean((np.array(obs_counts[:min_len]) - np.array(mod_counts[:min_len]))**2))
-
-    for mois_num in range(1, 13):
-        obs_hourly = obs_mois_all[mois_num-1]
-        mod_hourly = model_mois_all[mois_num-1]
-        obs_counts = count_hours_in_bins(obs_hourly, bin_edges)
-        mod_counts = count_hours_in_bins(mod_hourly, bin_edges)
-        total_hours = 2*heures_par_mois[mois_num-1]
-        hours_error = sum(abs(np.array(obs_counts) - np.array(mod_counts)))
-        pct_precision = round(100 * (1 - hours_error / total_hours), 2)
-        val_rmse = rmse_hours(obs_counts, mod_counts)
-        results_temp.append({
-            "Mois": mois_noms[mois_num],
-            "RMSE (heure)": round(val_rmse, 2),
-            "Précision (%)": pct_precision
-        })
-
-    df_temp_precision = pd.DataFrame(results_temp)
-    df_temp_precision_styled = df_temp_precision.style \
-        .background_gradient(subset=["Précision (%)"], cmap="RdYlGn", vmin=vminP, vmax=vmaxP, axis=None) \
-        .format({"Précision (%)": "{:.2f}", "RMSE (heure)": "{:.2f}"})
-
-    st.subheader(f"Précision des sources sur la répartition des durées des plages de température ({label_mod} vs {label_obs})")
-    st.dataframe(df_temp_precision_styled, hide_index=True)
-
     # ============================
     #   COURBES Tn / Tmoy / Tx
     # ============================
